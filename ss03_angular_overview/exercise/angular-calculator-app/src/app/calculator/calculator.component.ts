@@ -31,7 +31,7 @@ export class CalculatorComponent implements OnInit {
   div() {
     if (this.secondNum == 0) {
       this.result = 'Không thể chia cho 0';
-    } else{
+    } else {
       this.result = this.firstNum / this.secondNum;
     }
   }
