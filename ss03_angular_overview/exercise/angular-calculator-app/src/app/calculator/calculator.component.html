@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Calculator app</h1>
+  <label>Số thứ nhất</label>
+  <input type="number" [(ngModel)]="firstNum" placeholder="Nhập vào số thứ nhất">
+  <br><label>Số thứ hai</label>
+  <input type="number" [(ngModel)]="secondNum" placeholder="Nhập vào số thứ hai">
+  <br>
+  <button class="btn btn-success" (click)="sum()">+</button>
+  <br>
+  <button class="btn btn-warning" (click)="minus()">-</button>
+  <br>
+  <button class="btn btn-danger" (click)="multi()">x</button>
+  <br>
+  <button class="btn btn-info" (click)="div()">/</button>
+  <h1 style="color: green">
+    <p style="color: green">Kết quả tính toán:</p>
+    <p style="color: red">{{result}}</p>
+  </h1>
+</div>
+
