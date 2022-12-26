@@ -1,22 +1,9 @@
 <div class="p-3">
-  <h2 class="text-center fw-bold text-light my-3">DANH SÁCH DỊCH VỤ</h2>
-
-  <!--    <p class="text-center mt-3">-->
-  <!--        <a th:href="@{/}"><i class="fa-solid fa-house-chimney h5 mx-1"></i> Quay lại trang chủ</a>-->
-  <!--    </p>-->
-
-  <div>
-    <div class="justify-content-center d-flex">
-      <div class="alert alert-success alert-dismissible fade show w-50 text-center">
-        <strong></strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-      </div>
-    </div>
-  </div>
+  <h2 class="text-center fw-bold text-dark my-3">DANH SÁCH DỊCH VỤ</h2>
 
   <nav class="navbar navbar-expand-lg py-0 my-0">
     <div class="container-fluid">
-      <a th:href="@{/facility/create}">
+      <a href="/facility/create">
         <button class="btn btn-primary btn-outline-secondary btn-sm">
           <span class="fa-solid fa-house-medical text-light h5 my-auto me-1"></span>
           <span class="text-light"> Thêm mới dịch vụ</span>
@@ -27,13 +14,14 @@
         <input class="form-control me-2" type="text" placeholder="Nhập tên dịch vụ.." aria-label="Search"
                name="nameSearch">
         <button class="btn btn-light btn-outline-primary" type="submit" name="action" value="search">
-          Search</button>
+          Search
+        </button>
       </form>
     </div>
   </nav>
 
   <table class="table table-light table-striped table-bordered">
-    <tr class="table-dark text-light">
+    <tr class="table-light text-dark">
       <th class="text-center"><i class="fa-sharp fa-solid fa-bolt"></i></th>
       <th>Tên dịch vụ</th>
       <th>Diện tích (m<sup>2</sup>)</th>
@@ -46,10 +34,8 @@
       <th class="text-center">Xóa</th>
     </tr>
 
-    <tr >
-      <td class="text-center" ></td>
-
-      <td> </td>
+    <tr>
+      <td class="text-center"></td>
 
       <td></td>
 
@@ -61,55 +47,33 @@
 
       <td></td>
 
-      <td class="text-center">
-        <button>
-          <div class="text-dark">Chi tiết</div>
-        </button>
-      </td>
+      <td></td>
 
       <td class="text-center">
         <a>
-          <button class="btn btn-success btn-outline-secondary btn-sm">
-            <div class="text-dark">Sửa</div>
+          <button class="btn btn-info btn-outline-secondary btn-sm">
+            <div class="text-dark">Chi tiết</div>
           </button>
         </a>
       </td>
 
       <td class="text-center">
-        <button>
-          <div class="text-dark">Xóa</div>
-        </button>
+        <a>
+          <button class="btn btn-success btn-outline-secondary btn-sm">
+            <div class="text-light">Sửa</div>
+          </button>
+        </a>
+      </td>
+
+      <td class="text-center">
+        <a>
+          <button class="btn btn-danger btn-outline-secondary btn-sm">
+            <div class="text-dark">Xóa</div>
+          </button>
+        </a>
       </td>
     </tr>
   </table>
-
-  <nav aria-label="..." class="justify-content-center d-flex">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" >&laquo;</a>
-      </li>
-      <li class="page-item disabled">
-        <a class="page-link">&laquo;</a>
-      </li>
-
-      <li class="page-item"><a class="page-link" ></a>
-      </li>
-
-      <li class="page-item active">
-        <a class="page-link" ><span class="sr-only">(trang hiện tại)</span></a>
-      </li>
-
-      <li class="page-item"><a class="page-link" ></a>
-      </li>
-
-      <li class="page-item">
-        <a class="page-link" >&raquo;</a>
-      </li>
-      <li class="page-item disabled" >
-        <a class="page-link">&raquo;</a>
-      </li>
-    </ul>
-  </nav>
 </div>
 
 <footer></footer>

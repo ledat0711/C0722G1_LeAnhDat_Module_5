@@ -16,7 +16,7 @@ export class CustomerListComponent implements OnInit {
     },
     {
       id: 2,
-      customerTypeName: 'Platium',
+      customerTypeName: 'Platinum',
     }
   ];
   customerList: Customer[] = [
