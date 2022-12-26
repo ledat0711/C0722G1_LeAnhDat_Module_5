@@ -13,7 +13,7 @@ import { FacilityCreateComponent } from './facility/facility-create/facility-cre
 import { CustomerCreateComponent } from './customer/customer-create/customer-create.component';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
-import { ContractComponent } from './contract/contract.component';
+
 import { ContractCreateComponent } from './contract/contract-create/contract-create.component';
 
 @NgModule({
@@ -30,7 +30,6 @@ import { ContractCreateComponent } from './contract/contract-create/contract-cre
     CustomerCreateComponent,
     CustomerListComponent,
     CustomerEditComponent,
-    ContractComponent,
     ContractCreateComponent
   ],
   imports: [
