@@ -1,76 +1,40 @@
-<div class="p-3">
-  <h2 class="text-center fw-bold text-light my-3">DANH SÁCH HỢP ĐỒNG</h2>
+<div class="px-5">
+  <div class="p-3 px-5 mx-5">
+    <h2 class="text-center fw-bold text-dark mt-3">DANH SÁCH HỢP ĐỒNG <i class="fa-solid fa-file-signature"></i></h2>
 
-  <nav class="navbar navbar-expand-lg py-0 my-2">
-    <div class="container-fluid">
-      <button class="btn btn-primary btn-outline-secondary btn-sm" data-bs-toggle="modal"
-              data-bs-target="#addContract">
-        <span class="fa-solid fa-plus text-light h6 my-auto me-1"></span>
-        <span class="text-light"> Thêm mới hợp đồng</span>
-      </button>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg py-0 my-0 pb-2">
+      <div class="container-fluid">
+        <a routerLink="/contract/create">
+          <button class="btn btn-primary btn-outline-secondary">
+            <span class="fa-solid fa-plus text-light h6 my-auto me-1"></span>
+            <span class="text-light"> Thêm mới hợp đồng</span>
+          </button>
+        </a>
+      </div>
+    </nav>
 
-  <table class="table table-light table-striped table-bordered">
-    <tr class="table-dark text-dark">
-      <th>Tên dịch vụ</th>
-      <th>Tên nhân viên</th>
-      <th>Tên khách hàng</th>
-      <th>Ngày bắt đầu</th>
-      <th>Ngày kết thúc</th>
-      <th>Tiền đặt cọc</th>
-      <th>Tổng tiền</th>
-      <th class="text-center">Các dịch vụ đi kèm</th>
-    </tr>
+    <table class="table table-light table-striped table-bordered" id="customerTable">
+      <thead>
+      <tr class="table-dark text-light">
+        <th class="text-center">Tên khách hàng <i class="fa-solid fa-person-circle-question"></i></th>
+        <th class="text-center">Tên dịch vụ <i class="fa-solid fa-house"></i></th>
+        <th class="text-center">Ngày làm hợp đồng <i class="fa-regular fa-calendar"></i></th>
+        <th class="text-center">Ngày kết thúc hợp đồng <i class="fa-regular fa-calendar"></i></th>
+        <th class="text-center">Tiền đặt cọc <i class="fa-solid fa-money-bill-wave"></i></th>
+        <th class="text-center">Tổng tiền <i class="fa-solid fa-dollar-sign"></i></th>
+      </tr>
+      </thead>
 
-    <tr>
-      <td>Villa Beach Front</td>
-      <td>Lê Văn Bình</td>
-      <td>Nguyễn Thị Nga</td>
-      <td>24/12/2022</td>
-      <td>27/12/2022</td>
-      <td>500000</td>
-      <td>6000000</td>
-      <td class="text-center">
-        <button class="btn btn-primary btn-outline-secondary btn-sm text-dark" data-bs-toggle="modal"
-                data-bs-target="#addContractdetail">
-          +
-        </button>
-
-        <button class="btn btn-primary btn-outline-secondary btn-sm ms-3 px-3" data-bs-toggle="modal"
-                data-bs-target="#showAttachDetail">
-          <span class="text-dark m-auto">Danh sách dịch vụ đi kèm</span>
-        </button>
-      </td>
-    </tr>
-  </table>
-
-  <nav aria-label="..." class="justify-content-center d-flex">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link">&laquo;</a>
-      </li>
-      <li class="page-item disabled">
-        <a class="page-link">&laquo;</a>
-      </li>
-
-      <li class="page-item"><a class="page-link"></a>
-      </li>
-
-      <li class="page-item active">
-        <a class="page-link"><span class="sr-only">(trang hiện tại)</span></a>
-      </li>
-
-      <li class="page-item"><a class="page-link"></a>
-      </li>
-
-      <li class="page-item">
-        <a class="page-link">&raquo;</a>
-      </li>
-      <li class="page-item disabled">
-        <a class="page-link">&raquo;</a>
-      </li>
-    </ul>
-  </nav>
+      <tbody>
+      <tr *ngFor="let item of contractList; index as i">
+        <td>{{item.customer.customerName}}</td>
+        <td>{{item.facility.facilityName}}</td>
+        <td class="text-center">{{item.startDate | date: "dd/MM/yyyy"}}</td>
+        <td class="text-center">{{item.endDate | date: "dd/MM/yyyy"}}</td>
+        <td>{{item.deposit | currency: "VND"}}</td>
+        <td>{{item.deposit + item.facility.rentCost | currency: "VND"}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-

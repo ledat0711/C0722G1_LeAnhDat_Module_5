@@ -32,7 +32,7 @@ export class CustomerListComponent implements OnInit {
       customerType: this.customerTypeList[0],
     },
     {
-      id: 1,
+      id: 2,
       customerName: 'Nguyễn Minh Bâng',
       customerBirthday: '1996-05-09',
       customerGender: 2,
