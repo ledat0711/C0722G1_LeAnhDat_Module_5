@@ -1,0 +1,53 @@
+import {Component, OnInit} from '@angular/core';
+import {Customer} from '../../model/customer';
+import {CustomerType} from '../../model/customer-type';
+
+@Component({
+  selector: 'app-customer-list',
+  templateUrl: './customer-list.component.html',
+  styleUrls: ['./customer-list.component.css']
+})
+export class CustomerListComponent implements OnInit {
+  // customer: Customer = {};
+  customerType: CustomerType[] = [
+    {
+      id: 1,
+      customerTypeName: 'Diamond',
+    },
+    {
+      id: 2,
+      customerTypeName: 'Platium',
+    }
+  ];
+  customerList: Customer[] = [
+    {
+      id: 1,
+      customerName: 'Anh Hoang',
+      customerBirthday: '1994-07-28',
+      customerGender: 1,
+      customerIdCard: '201717556',
+      customerPhone: '0905667332',
+      customerEmail: 'anhhoang123@gmail.com',
+      customerAddress: 'Đà Nẵng',
+      customerType: this.customerType[0],
+    },
+    {
+      id: 1,
+      customerName: 'Nguyễn Minh Bâng',
+      customerBirthday: '1996-05-09',
+      customerGender: 2,
+      customerIdCard: '207878445',
+      customerPhone: '0905447992',
+      customerEmail: 'minhbang887@gmail.com',
+      customerAddress: 'Quảng Bình',
+      customerType: this.customerType[1],
+    }
+  ];
+
+  constructor() {
+  }
+
+  ngOnInit(): void {
+  }
+
+}
