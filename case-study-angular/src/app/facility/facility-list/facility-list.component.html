@@ -21,23 +21,19 @@
     </nav>
 
     <div class="row">
-      <div class="col-sm-4 mb-4">
+      <div class="col-sm-4 mb-4" *ngFor="let item of facilityList">
         <div class="card facilityCSS">
           <img height="250px"
-               src="https://tbb-prod-apac.imgix.net/attachments/room_type_photos/images/722773/722773/160407105.jpg?auto=format,compress&fit=crop&crop=entropy&w=1536&q=75"
+               src="{{item.facilityImage}}"
                class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Điện thoại</h5>
+            <h5 class="card-title">{{item.facilityName | uppercase}}</h5>
             <div class="row mb-2">
-              <div class="col-sm-6">
-                <span class="card-text">Loại dịch vụ: Thuê phòng</span><br>
-                <span class="card-text">Diện tích: 70 m<sup>2</sup></span><br>
-                <span class="card-text">Chí phí thuê: 1.000.000 VNĐ</span>
-              </div>
-              <div class="col-sm-6">
-                <span class="card-text">Số người tối đa: 5</span><br>
-                <span class="card-text">Kiểu thuê: Thuê theo ngày</span>
-              </div>
+                <span class="card-text">Loại dịch vụ: {{item.facilityType.facilityTypeName}}</span><br>
+                <span class="card-text">Diện tích: {{item.facilityArea}}<sup>2</sup></span><br>
+                <span class="card-text">Chí phí thuê: {{item.rentCost}}</span>
+                <span class="card-text">Số người tối đa: {{item.maxPeople}}</span><br>
+                <span class="card-text">Kiểu thuê: {{item.rentType.rentTypeName}}</span>
             </div>
             <a href="/facility/edit/" class="me-2">
               <button class="btn btn-warning btn-outline-secondary text-dark">Chỉnh sửa</button>

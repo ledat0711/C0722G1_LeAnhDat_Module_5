@@ -9,7 +9,7 @@ import {CustomerType} from '../../model/customer-type';
 })
 export class CustomerListComponent implements OnInit {
   // customer: Customer = {};
-  customerType: CustomerType[] = [
+  customerTypeList: CustomerType[] = [
     {
       id: 1,
       customerTypeName: 'Diamond',
@@ -29,7 +29,7 @@ export class CustomerListComponent implements OnInit {
       customerPhone: '0905667332',
       customerEmail: 'anhhoang123@gmail.com',
       customerAddress: 'Đà Nẵng',
-      customerType: this.customerType[0],
+      customerType: this.customerTypeList[0],
     },
     {
       id: 1,
@@ -40,7 +40,7 @@ export class CustomerListComponent implements OnInit {
       customerPhone: '0905447992',
       customerEmail: 'minhbang887@gmail.com',
       customerAddress: 'Quảng Bình',
-      customerType: this.customerType[1],
+      customerType: this.customerTypeList[1],
     }
   ];
 
