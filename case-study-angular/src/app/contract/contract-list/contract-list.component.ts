@@ -113,7 +113,7 @@ export class ContractListComponent implements OnInit {
       id: 1,
       startDate: '2022-02-11',
       endDate: '2022-02-20',
-      deposit: 20000,
+      deposit: 200,
       customer: this.customerList[0],
       facility: this.facilityList[0],
     }

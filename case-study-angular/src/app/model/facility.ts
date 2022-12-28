@@ -5,7 +5,7 @@ export interface Facility {
   id?: number;
   facilityName?: string;
   facilityArea?: number;
-  rentCost?: number;
+  rentCost: number;
   maxPeople?: number;
   standardRoom?: string;
   descriptionOtherConvenience?: string;

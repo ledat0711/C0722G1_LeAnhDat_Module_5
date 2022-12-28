@@ -1,6 +1,7 @@
 <div class="p-3 px-5">
-  <h2 class="text-center fw-bold text-light mt-3">
-    DANH SÁCH KHÁCH HÀNG <i class="fa-solid fa-person-circle-question"></i></h2>
+  <h2 class="text-center fw-bold text-dark mt-3">
+    DANH SÁCH KHÁCH HÀNG <i class="fa-solid fa-person-circle-question"></i>
+  </h2>
 
   <nav class="navbar navbar-expand-lg py-0 my-0">
     <div class="container-fluid">
@@ -10,13 +11,13 @@
           <span class="text-light"> Thêm mới khách hàng</span>
         </button>
       </a>
-
     </div>
   </nav>
 
   <table class="table table-light table-striped table-bordered" id="customerTable">
     <thead>
     <tr class="table-dark text-light">
+      <th class="text-center">STT <i class="fa-brands fa-playstation"></i></th>
       <th class="text-center">Tên khách hàng <i class="fa-solid fa-person-circle-question"></i></th>
       <th class="text-center">Ngày sinh <i class="fa-regular fa-calendar"></i></th>
       <th class="text-center">Giới tính <i class="fa-solid fa-heart"></i></th>
@@ -26,10 +27,13 @@
       <th class="text-center">Email <i class="fa-solid fa-envelope-circle-check"></i></th>
       <th class="text-center">Loại khách <i class="fa-solid fa-ranking-star"></i></th>
       <th class="text-center">Sửa</th>
+      <th class="text-center">Xóa</th>
+      <th class="text-center">Chi tiết</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let item of customerList; index as i">
+      <td>{{i + 1}}</td>
       <td>{{item.customerName | titlecase}}</td>
       <td class="text-center">{{item.customerBirthday | date: "dd/MM/yyyy"}}</td>
       <td>
@@ -44,13 +48,20 @@
       <td>{{item.customerType.customerTypeName}}</td>
       <td class="text-center">
         <a routerLink="/customer/edit/{{item.id}}">
-          <button class="btn btn-success btn-outline-secondary btn-sm text-light">
-            Sửa
-          </button>
+          <button class="btn btn-success btn-outline-secondary btn-sm text-light">Sửa</button>
+        </a>
+      </td>
+      <td class="text-center">
+        <a routerLink="/customer/edit/{{item.id}}">
+          <button class="btn btn-warning btn-outline-secondary btn-sm text-dark">Xóa</button>
+        </a>
+      </td>
+      <td class="text-center">
+        <a routerLink="/customer/edit/{{item.id}}">
+          <button class="btn btn-info btn-outline-secondary btn-sm text-dark">Chi tiết</button>
         </a>
       </td>
     </tr>
     </tbody>
   </table>
-
 </div>

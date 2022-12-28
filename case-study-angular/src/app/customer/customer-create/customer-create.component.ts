@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {CustomerType} from '../../model/customer-type';
 
 @Component({
   selector: 'app-customer-create',
@@ -6,10 +8,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-create.component.css']
 })
 export class CustomerCreateComponent implements OnInit {
+  customerFormGroup: FormGroup = new FormGroup({
+    customerName: new FormControl('', Validators.required),
+    customerBirthday: new FormControl('', this.checkMinAge18AndMaxAge80),
+    customerGender: new FormControl('', Validators.required),
+    customerIdCard: new FormControl('', [Validators.required, Validators.pattern('^\\d{9}$|^\\d{12}$')]),
+    customerPhone: new FormControl('', [Validators.required, Validators.pattern('(0|[(]84[)][+])9[01]\\d{7}')]),
+    customerEmail: new FormControl('', [Validators.required, Validators.email]),
+    customerAddress: new FormControl('', Validators.required),
+    customerType: new FormControl('', Validators.required)
+  });
 
-  constructor() { }
+  customerTypeList: CustomerType[] = [
+    {
+      id: 1,
+      customerTypeName: 'Diamond',
+    },
+    {
+      id: 2,
+      customerTypeName: 'Platinum',
+    }
+  ];
+
+  minAge = (new Date().getFullYear() - 80) + '-01-01';
+  maxAge = (new Date().getFullYear() - 18) + '-12-31';
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+  checkMinAge18AndMaxAge80(abstractControl: AbstractControl): any {
+    const formYear = new Date(abstractControl.value).getFullYear();
+    const curYear = new Date().getFullYear();
+
+    return (curYear - formYear >= 18 && curYear - formYear <= 80) ? null : {invalid18_80: true};
+  }
 }
+
