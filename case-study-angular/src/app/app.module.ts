@@ -16,6 +16,7 @@ import { CustomerEditComponent } from './customer/customer-edit/customer-edit.co
 
 import { ContractCreateComponent } from './contract/contract-create/contract-create.component';
 import { ContractListComponent } from './contract/contract-list/contract-list.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,10 +35,11 @@ import { ContractListComponent } from './contract/contract-list/contract-list.co
     ContractCreateComponent,
     ContractListComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
