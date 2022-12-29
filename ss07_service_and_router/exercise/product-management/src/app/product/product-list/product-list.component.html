@@ -2,7 +2,7 @@
   <h1>DANH SÁCH SẢN PHẨM</h1>
   <a routerLink="/product/create">Tạo mới sản phẩm</a>
   <table class="table">
-    <thead class="table-success">
+    <thead class="table-info text-center">
     <tr>
       <th>No.</th>
       <th>Tên</th>
@@ -12,14 +12,14 @@
       <th>Xóa</th>
     </tr>
     </thead>
-    <tbody class="table-warning">
+    <tbody class="table-warning text-center">
     <tr *ngFor="let product of products; index as i">
       <td>{{i + 1}}</td>
       <td>{{product.name}}</td>
       <td>{{product.price}}</td>
       <td>{{product.description}}</td>
-      <td><a [routerLink]="['/product/edit',product.id]">Edit</a></td>
-      <td><a [routerLink]="['/product/delete',product.id]">Delete</a></td>
+      <td><a class = "btn btn-success" [routerLink]="['/product/edit',product.id]">Edit</a></td>
+      <td><a class = "btn btn-danger" [routerLink]="['/product/delete',product.id]">Delete</a></td>
     </tr>
     </tbody>
   </table>
