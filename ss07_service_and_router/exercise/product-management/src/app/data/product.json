@@ -1,0 +1,34 @@
+{
+  "product": [
+    {
+      "id": 1,
+      "name": "SP A",
+      "price": 20,
+      "description": "san pham tot",
+      "category": {
+        "id": 1,
+        "name": "Loai mot"
+      }
+    },
+    {
+      "id": 2,
+      "name": "SP B",
+      "price": 43,
+      "description": "san pham kha",
+      "category": {
+        "id": 2,
+        "name": "Loai hai"
+      }
+    },
+    {
+      "id": 3,
+      "name": "SP B",
+      "price": 99,
+      "description": "Hang moi nhap ve so luong lon",
+      "category": {
+        "id": 3,
+        "name": "Loai ba"
+      }
+    }
+  ]
+}
