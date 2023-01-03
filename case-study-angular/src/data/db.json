@@ -1,0 +1,118 @@
+{
+  "facilities": [
+    {
+      "id": 1,
+      "facilityName": "Phong Funny A",
+      "facilityArea": 100,
+      "rentCost": 5000,
+      "maxPeople": 2,
+      "standardRoom": "",
+      "descriptionOtherConvenience": "",
+      "poolArea": 0,
+      "numberOfFloors": 0,
+      "facilityFree": "Bua sang mien phi",
+      "rentType": {
+        "id": 1,
+        "rentTypeName": "Giờ"
+      },
+      "facilityType": {
+        "id": 3,
+        "facility": "Room"
+      },
+      "facilityImage": "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Villas_Pool_Villas-F-370x239.jpg"
+    },
+    {
+      "id": 2,
+      "facilityName": "Phong Perfect B",
+      "facilityArea": 90,
+      "rentCost": 4000,
+      "maxPeople": 6,
+      "standardRoom": "tieu chuan b",
+      "descriptionOtherConvenience": "tien nghi khac tot",
+      "poolArea": 0,
+      "numberOfFloors": 0,
+      "facilityFree": "Bua trua hanh phuc",
+      "rentType": {
+        "id": 1,
+        "rentTypeName": "Giờ"
+      },
+      "facilityType": {
+        "id": 3,
+        "facility": "Room"
+      },
+      "facilityImage": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Garden-Deluxe-5-450x291.jpg"
+    },
+    {
+      "id": 3,
+      "facilityName": "Phong Ocean Deluxe",
+      "facilityArea": 36,
+      "rentCost": 5500,
+      "maxPeople": 7,
+      "standardRoom": "Tieu chuan platinum",
+      "descriptionOtherConvenience": "Tien nghi kha",
+      "poolArea": 0,
+      "numberOfFloors": 0,
+      "facilityFree": "Ho boi vo cuc",
+      "rentType": {
+        "id": 1,
+        "rentTypeName": "Giờ"
+      },
+      "facilityType": {
+        "id": 3,
+        "facility": "Room"
+      },
+      "facilityImage": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-450x291.jpg"
+    }
+  ],
+  "rentType": [
+    {
+      "id": 1,
+      "facilityTypeName": "Villa"
+    },
+    {
+      "id": 2,
+      "facilityTypeName": "House"
+    },
+    {
+      "id": 3,
+      "facilityTypeName": "Room"
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "customerName": "Nguyễn Văn Anh",
+      "customerBirthday": "1994-07-27",
+      "customerGender": 0,
+      "customerIdCard": "201717442",
+      "customerPhone": "0905116117",
+      "customerEmail": "vananh123@gmail.com",
+      "customerAddress": "Đà Thành",
+      "customerType": {
+        "id": 1
+      }
+    }
+  ],
+  "customerType": [
+    {
+      "id": 1,
+      "customerTypeName": "Member"
+    },
+    {
+      "id": 2,
+      "customerTypeName": "Member"
+    },
+    {
+      "id": 3,
+      "customerTypeName": "Member"
+    },
+    {
+      "id": 4,
+      "customerTypeName": "Member"
+    },
+    {
+      "id": 5,
+      "customerTypeName": "Member"
+    }
+  ]
+}

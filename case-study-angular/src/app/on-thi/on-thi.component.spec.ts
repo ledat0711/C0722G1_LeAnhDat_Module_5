@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContractListComponent } from './contract-list.component';
+import { OnThiComponent } from './on-thi.component';
 
-describe('ContractListComponent', () => {
-  let component: ContractListComponent;
-  let fixture: ComponentFixture<ContractListComponent>;
+describe('OnThiComponent', () => {
+  let component: OnThiComponent;
+  let fixture: ComponentFixture<OnThiComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContractListComponent ]
+      declarations: [ OnThiComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContractListComponent);
+    fixture = TestBed.createComponent(OnThiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
