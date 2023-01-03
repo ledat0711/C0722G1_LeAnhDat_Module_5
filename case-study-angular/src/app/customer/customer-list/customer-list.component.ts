@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Customer} from '../../model/customer';
-import {CustomerType} from '../../model/customer-type';
+import {CustomerService} from '../../service/customer.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-customer-list',
@@ -8,46 +9,81 @@ import {CustomerType} from '../../model/customer-type';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-  // customer: Customer = {};
-  customerTypeList: CustomerType[] = [
-    {
-      id: 1,
-      customerTypeName: 'Diamond',
-    },
-    {
-      id: 2,
-      customerTypeName: 'Platinum',
-    }
-  ];
-  customerList: Customer[] = [
-    {
-      id: 1,
-      customerName: 'Anh Hoang',
-      customerBirthday: '1994-07-28',
-      customerGender: 1,
-      customerIdCard: '201717556',
-      customerPhone: '0905667332',
-      customerEmail: 'anhhoang123@gmail.com',
-      customerAddress: 'Đà Nẵng',
-      customerType: this.customerTypeList[0],
-    },
-    {
-      id: 2,
-      customerName: 'Nguyễn Minh Bâng',
-      customerBirthday: '1996-05-09',
-      customerGender: 2,
-      customerIdCard: '207878445',
-      customerPhone: '0905447992',
-      customerEmail: 'minhbang887@gmail.com',
-      customerAddress: 'Quảng Bình',
-      customerType: this.customerTypeList[1],
-    }
-  ];
+  customerNameSearch = '';
+  customerAddressSearch = '';
+  customerPhoneSearch = '';
+  customerListPaging!: Customer[];
+  numberRecord = 5;
+  curPage = 1;
+  totalPage!: number;
+  customerNameDelete!: string;
+  customerIdDelete!: number;
 
-  constructor() {
+  constructor(private customerService: CustomerService) {
   }
 
   ngOnInit(): void {
+    this.customerService.findAllCustomerSearch(this.customerNameSearch, this.customerAddressSearch, this.customerPhoneSearch)
+      .subscribe(list => {
+          this.totalPage = Math.ceil(list.length / this.numberRecord);
+        }, error => {
+          console.log(error);
+        }, () => {
+          console.log('OK!');
+        }
+      );
+
+    this.customerService.findCustomerSearchPaging(this.numberRecord, this.curPage,
+      this.customerNameSearch, this.customerAddressSearch, this.customerPhoneSearch)
+      .subscribe(pagingList => {
+        this.customerListPaging = pagingList;
+      }, error => {
+        console.log(error);
+      }, () => {
+        console.log('Hiển thị khách hàng ở trang' + this.curPage);
+      });
   }
 
+  getInfoCustomerDelete(customerName: string, customerId: number): void {
+    this.customerNameDelete = customerName;
+    this.customerIdDelete = customerId;
+  }
+
+  previos(): void {
+    this.curPage++;
+    this.ngOnInit();
+  }
+
+  next(): void {
+    this.curPage--;
+    this.ngOnInit();
+  }
+
+  searchByMore(): void {
+    this.curPage = 1;
+    this.ngOnInit();
+  }
+
+  deleteCustomer(): void {
+    this.curPage = 1;
+    this.customerService.deleteCustomer(this.customerIdDelete)
+      .subscribe(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Xóa thành công!',
+          text: 'Khách hàng: ' + this.customerNameDelete,
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        });
+        this.ngOnInit();
+      }, error => {
+        console.log(error);
+      }, () => {
+        console.log('Hoàn thành xóa khách hàng');
+      });
+  }
 }

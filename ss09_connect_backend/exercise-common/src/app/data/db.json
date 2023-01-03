@@ -1,26 +1,4 @@
 {
-  "todos": [
-    {
-      "id": 1,
-      "content": "content4",
-      "complete": true
-    },
-    {
-      "id": 2,
-      "content": "content5",
-      "complete": false
-    },
-    {
-      "id": 4,
-      "content": "content4",
-      "complete": true
-    },
-    {
-      "id": 5,
-      "content": "content5",
-      "complete": false
-    }
-  ],
   "products": [
     {
       "name": "IPhone 11",
@@ -74,6 +52,10 @@
     }
   ],
   "categories": [
+    {
+      "id": 1,
+      "name": "Điện tử"
+    },
     {
       "id": 2,
       "name": "Quần áo"

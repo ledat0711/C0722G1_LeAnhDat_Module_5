@@ -2,8 +2,9 @@
   <h2 class="text-center fw-bold text-dark mt-3">
     DANH SÁCH KHÁCH HÀNG <i class="fa-solid fa-person-circle-question"></i>
   </h2>
-
   <nav class="navbar navbar-expand-lg py-0 my-0">
+
+    <!--    Thêm mới-->
     <div class="container-fluid">
       <a routerLink="/customer/create">
         <button class="btn btn-primary btn-outline-secondary">
@@ -11,29 +12,42 @@
           <span class="text-light"> Thêm mới khách hàng</span>
         </button>
       </a>
+
+      <!--      Tìm kiếm-->
+      <div class="d-flex my-2" role="search">
+        <input class="form-control me-2" type="text" placeholder="Nhập tên.." aria-label="Search"
+               [(ngModel)]="customerNameSearch">
+
+        <input class="form-control me-2" type="text" placeholder="Nhập địa chỉ.." aria-label="Search"
+               [(ngModel)]="customerAddressSearch">
+
+        <input class="form-control me-2" type="text" placeholder="Nhập SĐT.." aria-label="Search"
+               [(ngModel)]="customerPhoneSearch">
+        <button class="btn btn-light btn-outline-primary" (click)="searchByMore()">
+          <i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
     </div>
   </nav>
 
   <table class="table table-light table-striped table-bordered" id="customerTable">
     <thead>
     <tr class="table-dark text-light">
-      <th class="text-center">STT <i class="fa-brands fa-playstation"></i></th>
-      <th class="text-center">Tên khách hàng <i class="fa-solid fa-person-circle-question"></i></th>
-      <th class="text-center">Ngày sinh <i class="fa-regular fa-calendar"></i></th>
-      <th class="text-center">Giới tính <i class="fa-solid fa-heart"></i></th>
-      <th class="text-center">Số CMND/CCCD <i class="fa-solid fa-id-card"></i></th>
-      <th class="text-center">SĐT <i class="fa-solid fa-square-phone"></i></th>
-      <th class="text-center">Địa chỉ <i class="fa-solid fa-map-location-dot"></i></th>
-      <th class="text-center">Email <i class="fa-solid fa-envelope-circle-check"></i></th>
-      <th class="text-center">Loại khách <i class="fa-solid fa-ranking-star"></i></th>
+      <th class="text-center">STT</th>
+      <th class="text-center">Tên khách hàng</th>
+      <th class="text-center">Ngày sinh</th>
+      <th class="text-center">Giới tính</th>
+      <th class="text-center">Số CMND/CCCD</th>
+      <th class="text-center">SĐT</th>
+      <th class="text-center">Địa chỉ</th>
+      <th class="text-center">Email</th>
+      <th class="text-center">Loại khách</th>
       <th class="text-center">Sửa</th>
       <th class="text-center">Xóa</th>
-      <th class="text-center">Chi tiết</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of customerList; index as i">
-      <td>{{i + 1}}</td>
+    <tr *ngFor="let item of customerListPaging; index as i">
+      <td class="text-center">{{i + 1 + (curPage - 1) * 5}}</td>
       <td>{{item.customerName | titlecase}}</td>
       <td class="text-center">{{item.customerBirthday | date: "dd/MM/yyyy"}}</td>
       <td>
@@ -52,16 +66,59 @@
         </a>
       </td>
       <td class="text-center">
-        <a routerLink="/customer/edit/{{item.id}}">
-          <button class="btn btn-warning btn-outline-secondary btn-sm text-dark">Xóa</button>
-        </a>
-      </td>
-      <td class="text-center">
-        <a routerLink="/customer/edit/{{item.id}}">
-          <button class="btn btn-info btn-outline-secondary btn-sm text-dark">Chi tiết</button>
-        </a>
+        <button data-bs-toggle="modal"
+                data-bs-target="#deleteCustomer"
+                class="btn btn-warning btn-outline-secondary btn-sm text-dark"
+                (click)="getInfoCustomerDelete(item.customerName, item.id)">
+          Xóa
+        </button>
       </td>
     </tr>
     </tbody>
   </table>
+
+  <!--  Phân trang-->
+  <nav aria-label="..." class="justify-content-center d-flex">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" (click)="previos()" *ngIf="curPage > 1">&laquo; Trang trước</a>
+      </li>
+      <li class="page-item disabled" *ngIf="curPage <= 1">
+        <a class="page-link">&laquo;</a>
+      </li>
+
+      <li class="page-item"><a class="page-link disabled" href=""
+                               [text]="curPage + ' / ' + totalPage" *ngIf="curPage <= totalPage"></a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" (click)="next()" *ngIf="curPage < totalPage">Trang sau &raquo;</a>
+      </li>
+      <li class="page-item disabled" *ngIf="curPage >= totalPage">
+        <a class="page-link">&raquo;</a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <!--Modal xóa-->
+  <div class="modal fade" id="deleteCustomer" tabindex="-1" aria-labelledby="exampleModalLabel1"
+       aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content modalCSS">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel1">Bạn có chắc chắn muốn xóa?</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <span class="h6">Khách hàng:</span><strong class="text-danger ps-2">{{customerNameDelete}}</strong>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+          <button type="submit" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteCustomer()">Xóa</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
