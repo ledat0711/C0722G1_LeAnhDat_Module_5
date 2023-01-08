@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Customer} from '../model/customer';
+import {CustomerType} from '../model/customer-type';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,17 @@ export class CustomerService {
 
   deleteCustomer(id: number | undefined): Observable<Customer> {
     return this.httpClient.delete<Customer>(this.API_URL + 'customers/' + id);
+  }
+
+  addCustomer(customer: any): Observable<Customer> {
+    return this.httpClient.post<Customer>(this.API_URL + 'customers', customer);
+  }
+
+  findAllCustomerType(): Observable<CustomerType[]> {
+    return this.httpClient.get<CustomerType[]>(this.API_URL + 'customerTypes');
+  }
+
+  getById(id: number): Observable<Customer> {
+    return this.httpClient.get<Customer>(this.API_URL + 'customers/' + id);
   }
 }

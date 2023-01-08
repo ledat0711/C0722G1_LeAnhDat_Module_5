@@ -49,12 +49,12 @@ export class CustomerListComponent implements OnInit {
     this.customerIdDelete = customerId;
   }
 
-  previos(): void {
+  next(): void {
     this.curPage++;
     this.ngOnInit();
   }
 
-  next(): void {
+  previous(): void {
     this.curPage--;
     this.ngOnInit();
   }

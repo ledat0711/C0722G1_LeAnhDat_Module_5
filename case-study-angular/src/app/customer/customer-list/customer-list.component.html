@@ -81,13 +81,13 @@
   <nav aria-label="..." class="justify-content-center d-flex">
     <ul class="pagination">
       <li class="page-item">
-        <a class="page-link" (click)="previos()" *ngIf="curPage > 1">&laquo; Trang trước</a>
+        <a class="page-link" (click)="previous()" *ngIf="curPage > 1">&laquo; Trang trước</a>
       </li>
       <li class="page-item disabled" *ngIf="curPage <= 1">
         <a class="page-link">&laquo;</a>
       </li>
 
-      <li class="page-item"><a class="page-link disabled" href=""
+      <li class="page-item"><a class="page-link disabled"
                                [text]="curPage + ' / ' + totalPage" *ngIf="curPage <= totalPage"></a>
       </li>
 

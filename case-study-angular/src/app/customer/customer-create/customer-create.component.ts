@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerType} from '../../model/customer-type';
+import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
+import {CustomerService} from '../../service/customer.service';
 
 @Component({
   selector: 'app-customer-create',
@@ -19,24 +22,20 @@ export class CustomerCreateComponent implements OnInit {
     customerType: new FormControl('', Validators.required)
   });
 
-  customerTypeList: CustomerType[] = [
-    {
-      id: 1,
-      customerTypeName: 'Diamond',
-    },
-    {
-      id: 2,
-      customerTypeName: 'Platinum',
-    }
-  ];
+  customerTypeList: CustomerType[] = [];
 
-  minAge = (new Date().getFullYear() - 80) + '-01-01';
-  maxAge = (new Date().getFullYear() - 18) + '-12-31';
+  minDate = (new Date().getFullYear() - 80) + '-01-01';
+  maxDate = (new Date().getFullYear() - 18) + '-12-31';
 
-  constructor() {
+  constructor(private customerService: CustomerService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
+    this.customerService.findAllCustomerType().
+    subscribe(next => {
+      this.customerTypeList = next;
+    });
   }
 
   checkMinAge18AndMaxAge80(abstractControl: AbstractControl): any {
@@ -44,6 +43,26 @@ export class CustomerCreateComponent implements OnInit {
     const curYear = new Date().getFullYear();
 
     return (curYear - formYear >= 18 && curYear - formYear <= 80) ? null : {invalid18_80: true};
+  }
+
+  submit(): void {
+    const customer = this.customerFormGroup.value;
+    this.customerService.addCustomer(customer)
+      .subscribe(() => {this.customerFormGroup.reset();
+    }, error => {
+      console.log(error);
+    }, () => {
+      Swal.fire({
+        title: 'Thêm mới thành công!',
+        text: 'Khách hàng: ' + customer.customerName,
+        // imageUrl: 'https://genk.mediacdn.vn/2018/9/20/a2989534790f069f03671d247dd5222b-15374152422351400600667.gif',
+        imageUrl: 'https://i.giphy.com/media/GRSnxyhJnPsaQy9YLn/giphy.webp',
+        imageHeight: 250,
+        imageWidth: 400
+      });
+      this.router.navigateByUrl('customer/list');
+      console.log('Thêm mới khách hàng thành công!');
+    });
   }
 }
 

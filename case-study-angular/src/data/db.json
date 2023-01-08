@@ -245,20 +245,6 @@
   ],
   "customers": [
     {
-      "customerName": "Nguyễn Anh",
-      "customerBirthday": "2001-01-20",
-      "customerGender": 0,
-      "customerIdCard": "123456789",
-      "customerPhone": "0901111111",
-      "customerEmail": "cu.ty@gmail.com",
-      "customerAddress": "Cao Nguyên, Gia Lai",
-      "customerType": {
-        "id": 3,
-        "customerTypeName": "Gold"
-      },
-      "id": 1
-    },
-    {
       "id": 2,
       "customerName": "Trần An",
       "customerBirthday": "1997-02-14",
@@ -355,6 +341,118 @@
         "customerTypeName": "Platinium"
       },
       "id": 9
+    },
+    {
+      "customerName": "Nguyễn Tâm Vinh",
+      "customerBirthday": "1990-12-12",
+      "customerGender": 0,
+      "customerIdCard": "201717678",
+      "customerPhone": "0905445667",
+      "customerEmail": "tamvinh@gmail.com",
+      "customerAddress": "Đà Nẵng",
+      "customerType": {
+        "id": 4,
+        "customerTypeName": "Platinium"
+      },
+      "id": 10
+    },
+    {
+      "customerName": "Nguyễn Tâm Vinh",
+      "customerBirthday": "1990-12-12",
+      "customerGender": 0,
+      "customerIdCard": "201717551",
+      "customerPhone": "0905445667",
+      "customerEmail": "tamvinh@gmail.com",
+      "customerAddress": "Đà Nẵng",
+      "customerType": {
+        "id": 4,
+        "customerTypeName": "Platinium"
+      },
+      "id": 11
+    },
+    {
+      "customerName": "Nguyen Linh",
+      "customerBirthday": "1995-11-20",
+      "customerGender": 1,
+      "customerIdCard": "201818556",
+      "customerPhone": "0905123456",
+      "customerEmail": "nguyenlinh446@gmail.com",
+      "customerAddress": "Đà Nẵng",
+      "customerType": {
+        "id": 3,
+        "customerTypeName": "Gold"
+      },
+      "id": 12
+    },
+    {
+      "customerName": "Nguyễn Tâm Vinh",
+      "customerBirthday": "1990-12-12",
+      "customerGender": 0,
+      "customerIdCard": "201717567",
+      "customerPhone": "0905445667",
+      "customerEmail": "nguyenlinh446@gmail.com",
+      "customerAddress": "Đà Nẵng",
+      "customerType": {
+        "id": 3,
+        "customerTypeName": "Gold"
+      },
+      "id": 13
+    },
+    {
+      "customerName": "Nguyen Linh",
+      "customerBirthday": "1990-12-12",
+      "customerGender": 0,
+      "customerIdCard": "201919221",
+      "customerPhone": "0905445667",
+      "customerEmail": "tamvinh@gmail.com",
+      "customerAddress": "Đà Nẵng",
+      "customerType": {
+        "id": 5,
+        "customerTypeName": "Diamond"
+      },
+      "id": 14
+    },
+    {
+      "customerName": "Nguyễn Tâm Vinh Hai",
+      "customerBirthday": "1990-12-12",
+      "customerGender": 0,
+      "customerIdCard": "201717123",
+      "customerPhone": "0905445667",
+      "customerEmail": "nguyenlinh446@gmail.com",
+      "customerAddress": "Đà Nẵng",
+      "customerType": {
+        "id": 4,
+        "customerTypeName": "Platinium"
+      },
+      "id": 15
+    },
+    {
+      "customerName": "Nguyen Linh",
+      "customerBirthday": "1990-12-12",
+      "customerGender": 0,
+      "customerIdCard": "201918331",
+      "customerPhone": "0905123456",
+      "customerEmail": "tamvinh@gmail.com",
+      "customerAddress": "Đà Nẵng",
+      "customerType": {
+        "id": 3,
+        "customerTypeName": "Gold"
+      },
+      "id": 16
+    },
+    {
+      "customerName": "Nguyễn Tâm Vinh",
+      "customerBirthday": "1990-12-12",
+      "customerGender": 0,
+      "customerIdCard": "201918781",
+      "customerPhone": "0905123456",
+      "customerEmail": "tamvinh@gmail.com",
+      "customerAddress": "Đà Nẵng",
+      "customerType": {
+        "id": 4,
+        "customerTypeName": "Platinium"
+      },
+      "id": 17
     }
   ],
   "customerTypes": [
@@ -468,7 +566,6 @@
       "endDate": "2022-10-22",
       "deposit": 0,
       "customer": {
-        "id": 1,
         "id": 3,
         "customerName": "Hồ Bình",
         "customerBirthday": "1998-12-12",
