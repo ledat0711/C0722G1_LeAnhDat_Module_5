@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin()
+@CrossOrigin("http://localhost:4200/")
 public class BatchController {
     @Autowired
     private IBatchService batchService;

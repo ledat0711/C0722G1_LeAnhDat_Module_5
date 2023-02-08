@@ -1,0 +1,19 @@
+1. ở html sửa: nút nhập lại => khôi phục, Tiêu Đề => Tiêu đề , Nội Dung => Nội dung
+
+2. ở html thêm mới: nút nhập lại => làm mới
+
+3. ở component list: 
+
+  sendToDeleteGroupModal(): void {
+    this.deleteNotifications = [];
+    this.notificationService.findByListId(this.deleteIds).subscribe(data => {
+      this.deleteNotifications = data;
+    }, error => {
+      this.toastrService.error('Đã xảy ra lỗi', 'Lỗi', {
+        timeOut: 2000,
+        progressBar: true,
+        positionClass: 'toast-top-right',
+        easing: 'ease-in'
+      });
+    });
+  }
