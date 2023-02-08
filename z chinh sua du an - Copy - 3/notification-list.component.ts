@@ -53,8 +53,8 @@ export class NotificationListComponent implements OnInit {
       }
       if (notificationToSearch.title == '%' || notificationToSearch.title == '/' ||
         notificationToSearch.content == '%' || notificationToSearch.content == '/') {
-        this.toastrService.error('Không được nhập duy nhất ký tự % hoặc / trong ô tìm kiếm', 'Lỗi tìm kiếm', {
-          timeOut: 2000,
+        this.toastrService.error('Không được nhập duy nhất ký tự "%" hoặc "/" trong ô tìm kiếm', 'Lỗi tìm kiếm', {
+          timeOut: 5000,
           progressBar: true,
           positionClass: 'toast-top-right',
           easing: 'ease-in'
