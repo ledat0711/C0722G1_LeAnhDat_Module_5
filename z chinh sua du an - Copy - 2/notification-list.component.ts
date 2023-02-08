@@ -6,7 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import {PageNotificationDto} from '../../dto/page-notification-dto';
 import {NotificationDeleteDto} from '../../dto/notification-delete-dto';
 import {NotificationService} from '../../service/notification.service';
-import {Title} from "@angular/platform-browser";
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-notification-list',
@@ -24,34 +24,46 @@ export class NotificationListComponent implements OnInit {
   constructor(private notificationService: NotificationService,
               private formBuilder: FormBuilder,
               private toastrService: ToastrService,
-              private titleService:Title) {
-    this.titleService.setTitle("DANH SÁCH THÔNG BÁO")
+              private titleService: Title) {
+    this.titleService.setTitle('DANH SÁCH THÔNG BÁO');
   }
 
   ngOnInit(): void {
     this.createSearchForm();
-    this.searchNotification(0,true);
+    this.searchNotification(0, true);
     this.deleteIds = [];
     this.checkedAll = false;
   }
 
-  searchNotification(pageNumber: number,flag: boolean): void {
+  searchNotification(pageNumber: number, flag: boolean): void {
     let notificationToSearch = this.rfSearch.value;
     notificationToSearch.startDate = this.rfSearch.value.startDate.trim();
     notificationToSearch.title = this.rfSearch.value.title.trim();
     notificationToSearch.content = this.rfSearch.value.content.trim();
     this.notificationService.getPageNotifications(notificationToSearch, pageNumber).subscribe(data => {
-      if (data == null || notificationToSearch.title == '%' || notificationToSearch.title == '/' ||
-        notificationToSearch.content == '%' || notificationToSearch.content == '/'){
-        this.toastrService.error('Đã xảy ra lỗi khi tìm kiếm', 'Lỗi', {
+      if (data == null) {
+        this.pageNotifications = data;
+        this.toastrService.warning('Không tìm thấy kết quả phù hợp!', '', {
           timeOut: 2000,
           progressBar: true,
           positionClass: 'toast-top-right',
           easing: 'ease-in'
         });
+        return;
+      }
+      if (notificationToSearch.title == '%' || notificationToSearch.title == '/' ||
+        notificationToSearch.content == '%' || notificationToSearch.content == '/') {
+        this.toastrService.error('Không được nhập duy nhất ký tự % hoặc / trong ô tìm kiếm', 'Lỗi tìm kiếm', {
+          timeOut: 2000,
+          progressBar: true,
+          positionClass: 'toast-top-right',
+          easing: 'ease-in'
+        });
+        this.pageNotifications.content = [];
+        return;
       }
       if (flag == false && data !== null && (notificationToSearch.title !== '%' && notificationToSearch.title !== '/' &&
-        notificationToSearch.content !== '%' && notificationToSearch.content !== '/')){
+        notificationToSearch.content !== '%' && notificationToSearch.content !== '/')) {
         this.toastrService.success('Tìm kiếm thành công', 'Thông báo', {
           timeOut: 2000,
           progressBar: true,
@@ -61,6 +73,12 @@ export class NotificationListComponent implements OnInit {
       }
       this.pageNotifications = data;
     }, error => {
+      this.toastrService.error('Đã xảy ra lỗi khi tìm kiếm', 'Lỗi', {
+        timeOut: 2000,
+        progressBar: true,
+        positionClass: 'toast-top-right',
+        easing: 'ease-in'
+      });
     });
   }
 
@@ -106,7 +124,7 @@ export class NotificationListComponent implements OnInit {
   }
 
   gotoPage(pageNumber: number): void {
-    this.searchNotification(pageNumber,true);
+    this.searchNotification(pageNumber, true);
   }
 
   addToDelete(id: number): void {
