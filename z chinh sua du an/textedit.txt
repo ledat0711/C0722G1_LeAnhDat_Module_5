@@ -1,0 +1,3 @@
+1. Xóa comment ở notification list html
+
+2. Xóa comment ở notification update html
