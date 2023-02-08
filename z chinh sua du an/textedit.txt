@@ -1,3 +1,10 @@
-1. Xóa comment ở notification list html
-
-2. Xóa comment ở notification update html
+  searchNotification(pageNumber: number): void {
+    let notificationToSearch = this.rfSearch.value;
+    notificationToSearch.startDate = this.rfSearch.value.startDate.trim();
+    notificationToSearch.title = this.rfSearch.value.title.trim();
+    notificationToSearch.content = this.rfSearch.value.content.trim();
+    this.notificationService.getPageNotifications(notificationToSearch, pageNumber).subscribe(data => {
+      this.pageNotifications = data;
+    }, error => {
+    });
+  }
